@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% for message in messages %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    <h2>Register</h2>
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form">
+            <input class="username" autofocus type="text" name="username" placeholder="Username" required>
+            <input class="username" type="email" name="email" placeholder="Email Address" required>
+            <input class="username" type="password" name="password" placeholder="Password" required>
+            <input class="username" type="password" name="confirmation" placeholder="Confirm Password" required>
+            <button class="publish" type="submit">Register</button>
+            <p>Already have an account? <a class="underline" href="{% url 'login' %}">Log In here.</a></p>
+        </div>
+    </form>
+
+
+{% endblock %}

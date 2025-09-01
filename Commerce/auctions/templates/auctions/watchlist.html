@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    {% for message in messages %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+
+    <h2>Watchlist</h2>
+
+    <main>
+        {% for item in listings%}
+            <div class="container-listing">
+                <h3><a href={% url 'item' item.id %}>{{ item.name|truncatewords:3 }}</a></h3>
+                <a class="category" href={% url 'categories' item.category %}>{{ item.category }}</a>
+                <p class="description">{{ item.description|truncatewords:40 }}</p>
+                <div class="image-item">
+                    {% if item.image %}
+                        <a href={% url 'item' item.id %}><img class="image" src="{{ item.image.url }}" alt="Listing Image"></a>
+                    {% else %}
+                        <img class="image noimage" src="{% static 'auctions/noimage.png' %}" alt="No image" > <br>
+                        <p class="noimage"> No Image </p>
+                    {% endif %}
+                </div>
+                <p class="price">{{ item.price }} &euro; </p>
+
+                <form action="{% url 'delete' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Remove from Watchlist</button>
+                </form>
+            </div>
+        {% endfor %}
+    </main>
+
+{% endblock %}

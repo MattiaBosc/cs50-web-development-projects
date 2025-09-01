@@ -1,0 +1,469 @@
+@import "reset";
+
+$transition: rgba(200, 200, 200);
+$card-background: rgba(157, 203, 90, 0.2);
+$site-background: white;
+$card-shadow: 0px 0px 5px grey;
+$category-background: rgba(157, 203, 90, 0.5);
+$rounded-borders-1: 5px;
+$rounded-borders-2: 25px;
+
+@mixin margins {
+    margin-left: -2vw;
+    margin-right: -2vw;
+}
+
+@mixin lato {
+    font: {
+        family: "Lato", sans-serif;
+        weight: 400;
+        style: normal;
+    }
+}
+
+@mixin centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+body {
+    margin: 2vw;
+    background-color: $site-background;
+    @include lato;
+}
+
+.container-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(to top, $transition, $site-background);
+    @include margins;
+    .logo {
+        flex: 1;
+        width: 100px;
+        margin-left: 2vw;
+    }
+}
+
+.pridi-bold {
+    font: {
+        family: "Pridi", serif;
+        weight: 700;
+        style: normal;
+        size: 3rem;
+    }
+    flex: 1;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to top, rgb(180, 180, 180), $transition);
+    @include margins;
+    z-index: 1;
+    a {
+        text-align: center;
+        padding: 10px;
+        font: {
+            weight: 700;
+            size: 1.25rem;
+        }
+    }
+    a:hover {
+        text-shadow: 0px 5px 10px rgb(80, 80, 80);
+        font-size: 1.35rem;
+    }
+}
+
+@mixin nav-n {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    min-height: 3.5rem;
+}
+
+.nav-1 {
+    @include nav-n;
+    min-width: 400px;
+    justify-content: left;
+    flex: 2;
+    margin-left: 2vw;
+}
+
+.nav-2 {
+    @include nav-n;
+    min-width: 300px;
+    justify-content: right;
+    flex: 1;
+    margin-right: 2vw;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+hr {
+    @include margins;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-around;
+}
+
+.container-listing {
+    display: grid;
+    flex-grow: 1;
+    min-width: 400px;
+    flex-basis: 30%;
+    border-radius: $rounded-borders-1;
+    grid-template-columns: 150px auto 170px;
+    grid-template-rows: 4rem auto 4rem;
+    box-shadow: $card-shadow;
+    background-color: $card-background;
+    * {
+        @include centering;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+    grid-area: 1 / 1 / 2 / 3;
+    justify-content: flex-start;
+}
+
+.category {
+    grid-area: 1 / 3 / 2 / 4;
+    background-color: $category-background;
+    box-shadow: $card-shadow;
+    border-radius: $rounded-borders-1;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.noimage {
+    opacity: 0.25;
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    grid-area: 2 / 1 / 4 / 2;
+}
+
+.description {
+    justify-content: flex-start;
+    align-items: center;
+    grid-area: 2 / 2 / 3 / 4;
+    margin: 0.5rem;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.price,
+.single-price {
+    background-color: rgba(250, 205, 33, 0.75);
+    grid-area: 3 / 3 / 4 / 4;
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0.5rem;
+    padding: 0;
+    border-radius: $rounded-borders-1;
+}
+
+.container-listing h3:hover,
+.category:hover,
+.single-title a:hover,
+.underline {
+    text-decoration: underline;
+}
+
+.category:hover,
+button:hover,
+.container-listing:hover {
+    box-shadow: 0px 0px 10px grey;
+}
+
+.list > * {
+    flex-basis: 25%;
+    min-width: 20rem;
+    text-align: center;
+}
+
+button {
+    background-color: #c35a5a;
+    border-radius: $rounded-borders-1;
+    border: none;
+    color: white;
+    padding: 1rem;
+}
+
+.create, .form {
+    @include centering;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: $rounded-borders-1;
+    padding: 1rem;
+    background-color: $card-background;
+    width: 80%;
+    margin: auto;
+}
+
+@mixin standard-font {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: $rounded-borders-2;
+    @include lato;
+    padding-left: 1rem;
+}
+
+.select {
+    @include standard-font;
+    flex: 1;
+    width: 15%;
+    min-width: 10rem;
+}
+
+.picture,
+.username {
+    @include standard-font;
+}
+
+.save {
+    background-color: rgba(157, 203, 90, 1);
+    font-weight: 700;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: 1.15rem;
+    flex: 1;
+}
+
+.title-description {
+    @include centering;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.textarea-1 {
+    flex: 2;
+    text-align: center;
+}
+
+.title-1 {
+    flex: 1;
+    text-align: center;
+}
+
+.textarea {
+    @include standard-font;
+    width: 100%;
+    min-width: 22.5rem;
+    max-width: 70vw;
+}
+
+.title {
+    @include standard-font;
+    width: 100%;
+    max-width: 22.5rem;
+    min-width: 15rem;
+    border: 1px solid grey;
+    margin-bottom: 1rem;
+}
+
+.username {
+    border: 1px solid grey;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.title-description label,
+.comment label,
+.bid label,
+.picture {
+    margin: 0.5rem;
+}
+
+.single-item {
+    display: grid;
+    min-width: 450px;
+    border: 3px solid rgba(157, 203, 90, 0.5);
+    border-radius: $rounded-borders-1;
+    grid-template-columns: 300px auto 180px;
+    grid-template-rows: 4rem 4rem auto 4rem;
+    box-shadow: 0px 0px 5px grey;
+    background-color: rgba(157, 203, 90, 0.1);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    * {
+        @include centering;
+    }
+}
+
+.watching {
+    grid-area: 2 / 3 / 3 / 4;
+    text-align: center;
+}
+
+.single-description {
+    grid-area: 1 / 2 / 5 / 3;
+}
+
+.single-image {
+    display: flex;
+    flex-direction: column;
+    grid-area: 1 / 1 / 5 / 2;
+}
+
+.single-price {
+    grid-area: 4 / 3 / 5 / 4;
+}
+
+.author {
+    align-self: start;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.single-title {
+    @include centering;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    justify-content: space-between;
+    gap: 1rem
+}
+
+.bid {
+    @include centering;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.place {
+    @extend .save;
+    background-color: rgba(250, 205, 33, 1);
+    margin: 2rem;
+    margin-top: 1rem;
+}
+
+.bid-comment {
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 2rem;
+}
+
+.publish {
+    @extend .save;
+    margin: 1rem;
+}
+
+.bid-text {
+    text-align: center;
+}
+
+.current-bid {
+    font-size: 1.5rem;
+}
+
+.user-comment {
+    padding: 1rem;
+    border-radius: $rounded-borders-1;
+}
+
+.user-comment:nth-child(even) {
+    background-color: rgb(220, 220, 220);
+    margin: 1rem 2% 2rem 15%;
+}
+
+.user-comment:nth-child(odd) {
+    background-color: rgb(240, 240, 240);
+    margin: 1rem 15% 2rem 2%;
+}
+
+.inner-comment {
+    padding: 1rem 0.25rem 0.25rem 1.5rem;
+}
+
+.comment-author {
+    text-align: left;
+}
+
+.closed {
+    color: rgb(190, 50, 50);
+    font-size: 2rem;
+}
+
+.winner {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.message {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: rgba(255, 155, 30, 0.25);
+    border: 2px solid rgb(255, 155, 30, 0.75);
+    border-radius: $rounded-borders-1;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+@media (max-width: 800px) {
+    .single-description {
+        grid-area: 3 / 1 / 4 / 3;
+    }
+
+    .single-image {
+        grid-area: 1 / 1 / 3 / 3;
+    }
+
+    .single-price {
+        grid-area: 4 / 1 / 5 / 2;
+    }
+
+    .single-item {
+        grid-template-columns: 300px auto auto;
+    }
+}

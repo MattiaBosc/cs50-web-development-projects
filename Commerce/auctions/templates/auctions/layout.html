@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}TopBidder - Bid Smart, Win Big{% endblock %}</title>
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link rel="icon" href="{% static 'auctions/favicon.ico' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymus">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymus">
+        <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymus">
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymus">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymus">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" crossorigin="anonymus">
+    </head>
+    <body>
+        <div class="container-logo">
+            <a href="{% url 'index' %}"><img class="logo" src="{% static 'auctions/auction.png' %}" alt="logo" ></a>
+            <h1 class="pridi-bold"><a href="{% url 'index' %}">TopBidder</a></h1>
+        </div>
+        <nav class="nav">
+            <div class="nav-1">
+                <a href="{% url 'index' %}">Active Listings</a>
+                <a href="{% url 'list_categories' %}">Categories</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create'%}">Create Listing</a>
+                    <a href="{% url 'watchlist'%}">Watchlist</a>
+                {% endif %}
+            </div>
+            <div class="nav-2">
+                {% if user.is_authenticated %}
+                    <p>Signed in as <strong>{{ user.username }}</strong>.</p>
+                    <a href="{% url 'logout' %}">Log Out</a>
+                {% else %}
+                    <p>Not signed in.</p>
+                    <a href="{% url 'login' %}">Log In</a>
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </div>
+        </nav>
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

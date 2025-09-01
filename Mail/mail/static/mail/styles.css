@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alert {
+    color: red;
+}
+
+.email {
+    padding: 1rem;
+    margin: 1rem;
+    padding-bottom: 1.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    line-height: 0.25rem;
+}
+
+.email:hover {
+    box-shadow: 5px 10px #888888;
+    cursor: pointer;
+}
+
+.timestamp {
+    color: rgb(100, 100, 100);
+    font-size: 0.75rem;
+}
+
+.read {
+    background-color: rgb(230, 230, 230);
+}
+
+#archive {
+    display: none;
+}

@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <h2>Active Listings</h2>
+
+    <main>
+        {% for listing in listings %}
+            <div class="container-listing">
+                <h3><a href={% url 'item' listing.id %}>{{ listing.name|truncatewords:3 }}</a></h3>
+                <a class="category" href={% url 'categories' listing.category %}>{{ listing.category }}</a>
+                <p class="description">{{ listing.description|truncatewords:30 }}</p>
+                <div class="image-item">
+                    {% if listing.image %}
+                        <a href={% url 'item' listing.id %}><img class="image" src="{{ listing.image.url }}" alt="Listing Image"></a>
+                    {% else %}
+                        <img class="image noimage" src="{% static 'auctions/noimage.png' %}" alt="No image" >
+                        <p class="noimage"> No Image </p>
+                    {% endif %}
+                </div>
+                <p class="price">{{ listing.price }} &euro; </p>
+            </div>
+        {% endfor %}
+    </main>
+
+{% endblock %}

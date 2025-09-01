@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#scroll {
+    height: 83vh;
+    overflow-y: auto;
+}
+
+.timestamp {
+    color: rgb(100, 100, 100);
+    font-size: 0.75rem;
+    margin-top: -0.5rem;
+}
+
+.subject {
+    margin: 1rem;
+}
+
+.alert {
+    color: red;
+}
+
+#my_posts {
+    height: 68vh;
+    overflow-y: auto;
+}

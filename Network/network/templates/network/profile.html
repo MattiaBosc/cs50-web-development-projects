@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container text-center py-4 px-4">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="row">
+                        <div class="col-12">
+                            <h1>{{ user.username}}</h1>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h4 id="followers"></h4>
+                        </div>
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 id="following-users"></h4>
+                        </div>
+                    <div class="col-12 bg-body border-0 rounded-2 pt-4" id="my_posts">
+                        <h3 class="mb-3">My Posts</h3>
+                        <div class="container" id="posts"></div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center" id="paginator"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4" id="scroll"></div>
+        </div>
+    </div>
+{% endblock %}
